@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import './App.css'
+import {Button} from "./Button";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+export const App = () => {
+// let num =1
+    const [num, setNum] = useState(1)
+    const increaseNum = () => {
+        if (num >= 0 && num<10) {
+            // num <= 10
+            setNum(num + 1)
+        }
+        if(num ===10 ){
+            setNum(0)
+        }
+    }
+    const resetNum=()=>{
+        setNum(0)
+    }
+    return (
+        <div className={'App'}>
+            <h1>{num}</h1>
+            <Button title={'click me to +'} callback={increaseNum}/>
+            <Button title={'reset'} callback={resetNum}/>
+        </div>
+    );
+};
