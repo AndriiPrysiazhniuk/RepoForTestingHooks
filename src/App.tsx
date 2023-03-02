@@ -27,12 +27,26 @@ export const App = () => {
              currentMoney = money.filter(el => el.banknots === 'rubls')
         }
         const onClickFilterHandler = (NameButton:FitlerType) => {
-            // setMoney(title)
             setFilter(NameButton)
         }
 
 
-        return (
+    const [num, setNum] = useState(1)
+    const increaseNum = () => {
+        if (num >= 0 && num<10) {
+            // num <= 10
+            setNum(num + 1)
+        }
+        if(num ===10 ){
+            setNum(0)
+        }
+    }
+    const resetNum=()=>{
+        setNum(0)
+    }
+
+
+    return (
             <div className={'App'}>
                 {currentMoney.map(el => {
                     return (
@@ -47,8 +61,9 @@ export const App = () => {
                 <Button title={'ruble'} callback={() => onClickFilterHandler('rubles')}/>
                 <Button title={'dollars'} callback={() => onClickFilterHandler('dollars')}/>
 
-                {/*<h1>{num}</h1>*/}
-                {/*<Button title={'reset'} callback={resetNum}/>*/}
+                <h1>{num}</h1>
+                <Button title={'increase'} callback={increaseNum}/>
+                <Button title={'reset'} callback={resetNum}/>
             </div>
         );
     }
@@ -70,17 +85,3 @@ export const App = () => {
 
 
 
-//  let num =1
-//     const [num, setNum] = useState(1)
-//     const increaseNum = () => {
-//         if (num >= 0 && num<10) {
-//             // num <= 10
-//             setNum(num + 1)
-//         }
-//         if(num ===10 ){
-//             setNum(0)
-//         }
-//     }
-//     const resetNum=()=>{
-//         setNum(0)
-//     }
